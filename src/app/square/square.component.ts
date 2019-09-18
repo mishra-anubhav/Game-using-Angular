@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-square',
-  templateUrl: './square.component.html',
-  styleUrls: ['./square.component.scss']
+  template: `
+    <button *ngIf="!value">{{ value }}</button>
+    <button  *ngIf="value == 'X'">{{ value }}</button>
+    <button *ngIf="value == 'O'">{{ value }}</button>
+  `,
+  styles: ['button { width: 100%; height: 100%; font-size: 5em !important; }']
 })
-export class SquareComponent implements OnInit {
-rando =Math.random();
-  constructor() { }
+export class SquareComponent  {
 
-  ngOnInit() {
-  }
+  @Input() value: 'X' | 'O';
 
 }
